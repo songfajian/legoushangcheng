@@ -5,11 +5,191 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>乐购商城</title>
+    <!-- 引入初始化样式 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- 引入主页样式 -->
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- 轮播图 -->
+    <script type="text/javascript">
+        window.onload = function () {
+            var wrap = document.getElementById('wrap'),
+                pic = document.getElementById('pic').getElementsByTagName("li"),
+                list = document.getElementById('list').getElementsByTagName('li'),
+                index = 0,
+                timer = null;
+
+            // 定义并调用自动播放函数
+            timer = setInterval(autoPlay, 1000);
+
+            // 鼠标划过整个容器时停止自动播放
+            wrap.onmouseover = function () {
+                clearInterval(timer);
+            }
+
+            // 鼠标离开整个容器时继续播放至下一张
+            wrap.onmouseout = function () {
+                timer = setInterval(autoPlay, 1000);
+            }
+            // 遍历所有数字导航实现划过切换至对应的图片
+            for (var i = 0; i < list.length; i++) {
+                list[i].onmouseover = function () {
+                    clearInterval(timer);
+                    index = this.innerText - 1;
+                    changePic(index);
+                };
+            };
+
+            function autoPlay() {
+                if (++index >= pic.length) index = 0;
+                changePic(index);
+            }
+
+            // 定义图片切换函数
+            function changePic(curIndex) {
+                for (var i = 0; i < pic.length; ++i) {
+                    pic[i].style.display = "none";
+                    list[i].className = "";
+                }
+                pic[curIndex].style.display = "block";
+                list[curIndex].className = "on";
+            }
+
+        };
+    </script>
+    <!-- 倒计时 -->
+    <script>
+        window.onload = function () {
+            //需求设置一个未来时间  倒计时
+            var showtime = function () {
+                var nowtime = new Date(),  //获取当前时间
+                    endtime = new Date("2021/4/8");  //定义结束时间
+                var lefttime = endtime.getTime() - nowtime.getTime(),  //距离结束时间的毫秒数
+                    leftd = Math.floor(lefttime / (1000 * 60 * 60 * 24));  //计算天数
+                if (leftd < 10) leftd = '0' + leftd
+                lefth = Math.floor(lefttime / (1000 * 60 * 60) % 24);  //计算小时数
+                if (lefth < 10) lefth = '0' + lefth
+                leftm = Math.floor(lefttime / (1000 * 60) % 60);  //计算分钟数
+                if (leftm < 10) leftm = '0' + leftm
+                lefts = Math.floor(lefttime / 1000 % 60);  //计算秒数
+                if (lefts < 10) lefts = '0' + lefts
+                return leftd + "天" + lefth + ":" + leftm + ":" + lefts;  //返回倒计时的字符串
+            }
+            var div = document.querySelector(".times");
+            setInterval(function () {
+                div.innerHTML = showtime();
+            }, 1000);  //反复执行函数本身
+        }
+    </script>
 </head>
 
 <body>
-    <h1>这是乐购首页</h1>
+    <!-- 这是顶部 -->
+    <div class="top">
+        <div class="min-top">
+            <div class="top-left">
+                <p><a href="#">乐购www.legou.com</a></p>
+            </div>
+            <div class="top-right">
+                <p class="S-up"> <span> <a href="#">登录</a></span>&nbsp;|&nbsp;<span><a href="#">注册</a></span></p>
+                <p>欢迎光临乐购 &nbsp;&nbsp;&nbsp;请 &nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <!-- 顶部结束 -->
+    <!-- 这是顶部导航  -->
+    <div class="top-nav">
+        <div class="nav-logo">
+            <div class="log">
+                <img src="./images/legoulogo.png" alt="">
+            </div>
+        </div>
+        <div class="topNav-right">
+            <div class="search">
+                <p><input type="text"><button class='search-btn'>搜索</button></p>
+                <div><button class="cart"><img src='./images/购物车.png'>购物车<span>0</span></button><button>我的订单</button>
+                </div>
+            </div>
+            <div class="topNav-main">
+                <a href="#">图书</a>
+                <a href="#">电子书</a>
+                <a href="#">原创文学</a>
+                <a href="#">服装</a>
+                <a href="#">运动户外</a>
+                <a href="#">孕婴童</a>
+                <a href="#">家居</a>
+                <a href="#">创意文具</a>
+                <a href="#">地方特产</a>
+                <a href="#">海外购</a>
+                <a href="#">电器城</a>
+            </div>
+        </div>
+    </div>
+    <!-- 顶部导航结束 -->
+    <!-- 导航 -->
+    <div class="dvd-line"></div>
+    <div class="wrap" id='wrap'>
+        <ul id="pic">
+            <div class="menu">
+                <p class="menu-first"><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+                <p><a href="#">图书</a><a href="#">电子书</a><a href="#">童书</a><span>></span></p>
+            </div>
+            <li><img src="./images/souye.png" alt=""></li>
+            <li><img src="./images/lunbo1 (2).jpg" alt=""></li>
+            <li><img src="./images/lunbo1 (2).jpeg" alt=""></li>
+            <li><img src="./images/lunbo1 (1).jpg" alt=""></li>
+            <li><img src="./images/lunbo1 (1).jpeg" alt=""></li>
+        </ul>
+        <ol id="list">
+            <li class="on">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+    <div class="dvd-line"></div>
+    <!-- 导航结束 -->
+    <!-- 活动商品 -->
+    <div class="event">
+        <div class="poster">
+            <p class="poster-left"><img src="./images/e7b51b721c3319e9c2916cc41cd9c695.jpg" alt=""></p>
+            <p class="poster-left" id="posterLeft"><img src="./images/37d52be5170e1b25d30ff44db4b0791c.jpg" alt="">
+            </p>
+            <p class="poster-right"><img src="./images/816a66edef10673b4768128b41804cae.jpg" alt=""></p>
+            <p class="poster-right"><img src="./images/816a66edef10673b4768128b41804cae.jpg" alt=""></p>
+        </div>
+        <div class="banner">
+            <p><img src="./images/e074a1c3c359701e236e712516189125.png" alt="扫码" class="bannerImg"></p>
+        </div>
+        <div class="seckill">
+            <div class="count-down">
+                <p class="times">时间</p>
+            </div>
+            <div class="discount">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 活动商品结束 -->
+    <!-- 每日好货推荐 -->
+    <!-- 结束 -->
+    <!-- 底部 -->
+    <!-- 底部结束 -->
 </body>
 
 </html>
