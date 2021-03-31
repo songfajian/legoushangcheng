@@ -20,7 +20,7 @@
                 timer = null;
 
             // 定义并调用自动播放函数
-            timer = setInterval(autoPlay, 1000);
+            timer = setInterval(autoPlay, 1500);
 
             // 鼠标划过整个容器时停止自动播放
             wrap.onmouseover = function () {
@@ -29,7 +29,7 @@
 
             // 鼠标离开整个容器时继续播放至下一张
             wrap.onmouseout = function () {
-                timer = setInterval(autoPlay, 1000);
+                timer = setInterval(autoPlay, 1500);
             }
             // 遍历所有数字导航实现划过切换至对应的图片
             for (var i = 0; i < list.length; i++) {
@@ -54,12 +54,6 @@
                 pic[curIndex].style.display = "block";
                 list[curIndex].className = "on";
             }
-
-        };
-    </script>
-    <!-- 倒计时 -->
-    <script>
-        window.onload = function () {
             //需求设置一个未来时间  倒计时
             var showtime = function () {
                 var nowtime = new Date(),  //获取当前时间
@@ -79,7 +73,18 @@
             setInterval(function () {
                 div.innerHTML = showtime();
             }, 1000);  //反复执行函数本身
-        }
+
+            //创建点击事件显示菜单
+            var book = document.querySelector('#book')
+            var menu = document.querySelector('.menu')
+            var abtn = document.querySelector('#abtn')
+            abtn.addEventListener('click', function () {
+                menu.style.display = 'block'
+            })
+            book.addEventListener('click', function () {
+                menu.style.display = 'none'
+            })
+        };
     </script>
 </head>
 
@@ -111,8 +116,8 @@
                 </div>
             </div>
             <div class="topNav-main">
-                <a href="#">图书</a>
-                <a href="#">电子书</a>
+                <a href="#" id="book">图书</a>
+                <a href="#" id="abtn">电子书</a>
                 <a href="#">原创文学</a>
                 <a href="#">服装</a>
                 <a href="#">运动户外</a>
@@ -177,17 +182,68 @@
                 <p class="times">时间</p>
             </div>
             <div class="discount">
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
+                <div class="discount-left">
+                    <p><img src="./images/75cfba1ec641388eabc3ae5464ff1d27.jpg" alt="活动商品"></p>
+                    <p>小米小爱音响Play</p>
+                    <p><span>￥129.00</span><del>￥230.00</del></p>
+                </div>
+                <div class="discount-left" id="discountRight">
+                    <p><img src="./images/75cfba1ec641388eabc3ae5464ff1d27.jpg" alt="活动商品"></p>
+                    <p>小米小爱音响Play</p>
+                    <p><span>￥129.00</span><del>￥230.00</del></p>
+                </div>
+                <div class="discount-right">
+                    <p><img src="./images/75cfba1ec641388eabc3ae5464ff1d27.jpg" alt="活动商品"></p>
+                    <p>小米小爱音响Play</p>
+                    <p><span>￥129.00</span><del>￥230.00</del></p>
+                </div>
+                <div class="discount-right">
+                    <p><img src="./images/75cfba1ec641388eabc3ae5464ff1d27.jpg" alt="活动商品"></p>
+                    <p>小米小爱音响Play</p>
+                    <p><span>￥129.00</span><del>￥230.00</del></p>
+                </div>
+
             </div>
         </div>
     </div>
-
     <!-- 活动商品结束 -->
     <!-- 每日好货推荐 -->
+    <div class="meiri"><img src="./images/meiri.png" alt="每日推荐" id="meiri"></div>
+    <div class="wares">
+        <div class="wumen-wear">
+            <div class='grab'>
+                <h1><span>乐购快枪</span>&nbsp;·&nbsp;美好生活抢先到</h1>
+                <p>品质好物&nbsp;天天低价>></p>
+            </div>
+            <div class="miui">
+                <li class='li-left'><img src="./images/wuman.png" alt="">
+                    <span>- 诗篇 -</span>
+                </li>
+                <li class=li-mid><img src="./images/red.png" alt="">
+                    <span>JNBY</span>
+                </li>
+                <li class='li-right'><img src="./images/wumanwear.png" alt="">
+                    <span>品质女装</span>
+                </li>
+            </div>
+        </div>
+        <div class="cosmetics">
+            <div class='brand'>
+                <h1><span>品牌活动</span>&nbsp;·&nbsp;最后疯抢&nbsp;3折封顶</h1>
+                <p>150+品牌疯抢中>></p>
+            </div>
+            <div class="miui1">
+                <li class=list-left><img src="./images/huazhuangpin.png" alt=""><span>ITS SKIN</span></li>
+                <li class='list-mid'><img src="./images/shangpin.png" alt=""><span>阿芙</span></li>
+                <li class=list-right><img src="./images/meinv.png" alt=""><span>Rosel女装</span></li>
+            </div>
+        </div>
+    </div>
     <!-- 结束 -->
+    <!-- 主体 -->
+    <div class="main">
+
+    </div>
     <!-- 底部 -->
     <!-- 底部结束 -->
 </body>
